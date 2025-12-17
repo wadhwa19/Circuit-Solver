@@ -1,4 +1,4 @@
-package main.java.gate;
+package gate;
 import java.util.List;
 
 public abstract class Gate {
