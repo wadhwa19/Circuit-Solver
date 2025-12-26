@@ -2,23 +2,23 @@ package model;
 
 import java.util.*;
 
-import gate.Gate;
-import gate.InputGate;
+import topogate.GateT;
+import topogate.InputGateT;
 
 public class Toposolver {
-    private final Map<String, Gate> idMap;
-    private final Map<Gate, List<Gate>> adjList = new HashMap<>();
-    private final Map<Gate, Integer> inDegree = new HashMap<>();
-    private final Map<Gate, Boolean> values = new HashMap<>();
-    private final Set<Gate> visited = new HashSet<>();
-    private final List<Gate> topoOrder = new ArrayList<>();
+    private final Map<String, GateT> idMap;
+    private final Map<GateT, List<GateT>> adjList = new HashMap<>();
+    private final Map<GateT, Integer> inDegree = new HashMap<>();
+    private final Map<GateT, Boolean> values = new HashMap<>();
+    private final Set<GateT> visited = new HashSet<>();
+    private final List<GateT> topoOrder = new ArrayList<>();
 
     public Toposolver() {
         idMap = new HashMap<>();
     }
 
     // Add gate to solver
-    public void addGate(String id, Gate gate){
+    public void addGate(String id, GateT gate){
         if (idMap.containsKey(id)) {
             throw new IllegalArgumentException("Gate ID already exists");
         }
@@ -27,14 +27,14 @@ public class Toposolver {
 
     // Build adjacency list and in-degree map
     public void createAdj() {
-        List<Gate> allGates = new ArrayList<>(idMap.values());
-        for (Gate g : allGates) {
+        List<GateT> allGates = new ArrayList<>(idMap.values());
+        for (GateT g : allGates) {
             adjList.put(g, new ArrayList<>());
             inDegree.put(g, 0);
         }
 
-        for (Gate g : allGates) {
-            for (Gate input : g.getInputs()) {
+        for (GateT g : allGates) {
+            for (GateT input : g.getInputs()) {
                 adjList.get(input).add(g);               // input → g
                 inDegree.put(g, inDegree.get(g) + 1);   // increment in-degree
             }
@@ -42,10 +42,10 @@ public class Toposolver {
     }
 
     // DFS post-order
-    private void dfsPost(Gate node) {
+    private void dfsPost(GateT node) {
         if (visited.contains(node)) return;
         visited.add(node);
-        for (Gate neighbor : adjList.get(node)) {
+        for (GateT neighbor : adjList.get(node)) {
             dfsPost(neighbor);
         }
         topoOrder.add(node);  // add after visiting all neighbors
@@ -53,8 +53,8 @@ public class Toposolver {
 
     // Generate topological order
     public void toposort() {
-        List<Gate> allGates = new ArrayList<>(idMap.values());
-        for (Gate g : allGates) {
+        List<GateT> allGates = new ArrayList<>(idMap.values());
+        for (GateT g : allGates) {
             if (!visited.contains(g)) {
                 dfsPost(g);
             }
@@ -63,12 +63,12 @@ public class Toposolver {
     }
 
     // Evaluate the circuit and return output
-    public boolean evaluate(Gate outputGate) {
-        for (Gate g : topoOrder) {
-            if (g instanceof InputGate) {
-                values.put(g, ((InputGate) g).evaluate());
+    public boolean evaluate(GateT outputGate) {
+        for (GateT g : topoOrder) {
+            if (g instanceof InputGateT) {
+                values.put(g, ((InputGateT) g).evaluate(values));
             } else {
-                values.put(g, g.evaluate());  // g.evaluate() should uses inputs' values
+                values.put(g, g.evaluate(values));  // g.evaluate() should uses inputs' values
             }
         }
 
@@ -76,7 +76,7 @@ public class Toposolver {
     }
 
     //  get gate by id
-    public Gate getGate(String id) {
+    public GateT getGate(String id) {
         if (!idMap.containsKey(id)) throw new IllegalArgumentException("Gate ID not found");
         return idMap.get(id);
     }
