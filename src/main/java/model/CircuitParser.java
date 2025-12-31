@@ -15,7 +15,7 @@ public class CircuitParser {
 
     // Simple recursive parser
     public GateT parse(String expr) {
-        expr = expr.replaceAll("\\s+", ""); // remove spaces
+        expr = expr.replaceAll("\\s+", ""); 
 
         if (expr.startsWith("AND(")) {
             return parseGate(expr, "AND");
@@ -25,7 +25,13 @@ public class CircuitParser {
             return parseGate(expr, "NOT");
         } else if (expr.startsWith("XOR(")) {
             return parseGate(expr, "XOR");
-        } else {
+        } else if (expr.startsWith("NAND(")) {
+            return parseGate(expr, "NAND");
+        } else if (expr.startsWith("NOR(")) {
+            return parseGate(expr, "NOR");
+        } 
+
+        else {
             // must be input
             InputGateT input = new InputGateT(expr, false);
             circuit.addGate(expr, input);
@@ -50,6 +56,8 @@ public class CircuitParser {
             case "OR"  -> gate = new OrGateT(gateId, inputs);
             case "NOT" -> gate = new NotGateT(gateId, inputs);
             case "XOR" -> gate = new XorGateT(gateId, inputs);
+            case "NAND" -> gate = new NandGateT(gateId, inputs);
+            case "NOR" -> gate = new NorGateT(gateId, inputs);
             default -> throw new IllegalArgumentException("Unknown gate type: " + type);
         }
 
@@ -57,7 +65,7 @@ public class CircuitParser {
         return gate;
     }
 
-    // Splits a comma-separated list at top-level only (not inside nested parentheses)
+    // Splits a comma-separated list at top-level only 
     private List<String> splitTopLevel(String s) {
         List<String> res = new ArrayList<>();
         int level = 0;
