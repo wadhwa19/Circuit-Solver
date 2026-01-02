@@ -108,7 +108,7 @@ java test.GateTest
 ![alt text](<Screenshot 2026-01-02 131913.png>)
 ### Run Integration Tests for Circuit Evaluation
 ``` bash
-javac -cp . test/CircuitTest.java \
+javac -cp . test/CircuitTest.java 
 java test.CircuitTest
 ```
 ![alt text](<Screenshot 2026-01-02 131936.png>)
@@ -173,6 +173,5 @@ java test.CircuitTest
 
 ## Future Developments 
 
--Add feedback loop functionality to circuits.
--Enhance UI.
+-Add feedback loop functionality to circuits and enhance UI.
 
