@@ -15,6 +15,9 @@ watch the computer do all that messy evaluation for me so I can really understan
 This tool has changed how I solve combinational circuits now. No more crossed-out truth tables, no more "wait, which input was this again?" Just clean, visual, algorithm-powered circuit solving.
 If you've ever felt overwhelmed by combinational logic, this one's for you. Circuits like half adders and sr latches are now easy to visualise !!!
 
+## Screenshots of UI
+
+
 
 ## Features
 
@@ -93,33 +96,18 @@ java --module-path "path/to/javafx-sdk/lib" \
 ```
 ## Running Tests
 The project has comprehensive gate logic and complete circuit integration tests.
-### Compiling Gate Logic Tests
-bash# Compile tests
+### Gate Logic Tests
+# Compile tests
 javac -cp . test/GateTest.java
 
+### Run Integration Tests for Circuit Evaluation
 # Run tests
 java test.GateTest
-Run Integration Tests (Circuit Evaluation)
-bash# Compile tests
+# Compile tests
 javac -cp . test/CircuitTest.java
 
 # Run tests
 java test.CircuitTest
-Expected Output:
-Running Logic Gate Unit Tests...
-
-Testing AND Gate:
-  ✓ AND(0,0) PASSED
-  ✓ AND(0,1) PASSED
-  ✓ AND(1,0) PASSED
-  ✓ AND(1,1) PASSED
-...
-========== TEST RESULTS ==========
-Passed: 24
-Failed: 0
-Total:  24
-==================================
-✓ All tests passed!
 
 ## How to Use
 
