@@ -16,7 +16,10 @@ This tool has changed how I solve combinational circuits now. No more crossed-ou
 If you've ever felt overwhelmed by combinational logic, this one's for you. Circuits like half adders and sr latches are now easy to visualise !!!
 
 ## Screenshots of UI
-
+![alt text](<Screenshot 2026-01-02 132604.png>)
+![alt text](<Screenshot 2026-01-02 132942.png>) 
+![alt text](<Screenshot 2026-01-02 132638.png>) 
+![alt text](<Screenshot 2026-01-02 132722.png>)
 
 
 ## Features
