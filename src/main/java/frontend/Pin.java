@@ -14,7 +14,7 @@ public class Pin extends Circle {
     private final VisualGate owner;
 
     public Pin(PinType type, VisualGate owner) {
-        super(8); // Increased radius from 5 to 8 for better visibility
+        super(8); 
         this.type = type;
         this.owner = owner;
 
@@ -22,7 +22,7 @@ public class Pin extends Circle {
         setStroke(Color.BLACK);
         setStrokeWidth(2);
         
-        // Make it easier to click by detecting clicks in a larger area
+        
         setPickOnBounds(true);
 
         setOnMouseClicked(e -> {
@@ -33,7 +33,7 @@ public class Pin extends Circle {
             e.consume();
         });
         
-        // Add hover effect for better UX
+       
         setOnMouseEntered(e -> {
             setScaleX(1.5);
             setScaleY(1.5);
@@ -43,7 +43,7 @@ public class Pin extends Circle {
         setOnMouseExited(e -> {
             setScaleX(1.0);
             setScaleY(1.0);
-            // Don't reset stroke width if this pin is selected
+            
             if (getStroke() != Color.YELLOW) {
                 setStrokeWidth(2);
             }
@@ -58,7 +58,7 @@ public class Pin extends Circle {
         return owner;
     }
 
-    /** Visual feedback during evaluation */
+   
     public void setSignal(boolean value) {
         setFill(value ? Color.LIMEGREEN : Color.DARKGRAY);
     }
