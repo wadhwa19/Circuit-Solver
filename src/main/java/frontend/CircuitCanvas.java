@@ -18,7 +18,7 @@ public class CircuitCanvas extends Pane {
 
     public CircuitCanvas() {
         setPrefSize(800, 600);
-        setStyle("-fx-background-color: white;");
+        setStyle("-fx-background-color: #ebe0e0e0;");
     }
 
     public void addGate(VisualGate gate, double x, double y) {
@@ -27,7 +27,7 @@ public class CircuitCanvas extends Pane {
         getChildren().add(gate);
         connections.put(gate, new ArrayList<>());
 
-        // Enable dragging
+        // dragging functionality
         gate.setOnMousePressed(event -> {
             gate.setUserData(new double[]{
                 event.getSceneX() - gate.getLayoutX(), 
@@ -57,7 +57,7 @@ public class CircuitCanvas extends Pane {
                 tempLine.getStrokeDashArray().addAll(5.0, 5.0);
                 getChildren().add(tempLine);
                 
-                // Update temp line position
+                
                 setOnMouseMoved(e -> {
                     if (tempLine != null && selectedPin != null) {
                         double startX = selectedPin.getOwner().getLayoutX() + 
@@ -89,7 +89,7 @@ public class CircuitCanvas extends Pane {
     }
     
     private void cancelConnection() {
-        // Clear temp line
+        // remove  temp  connection line
         if (tempLine != null) {
             getChildren().remove(tempLine);
             tempLine = null;
@@ -107,12 +107,12 @@ public class CircuitCanvas extends Pane {
     }
 
     private void connectGates(VisualGate from, VisualGate to) {
-        // Create visual wire
+        // Create a wire
         Wire wire = new Wire(from, to);
         wires.add(wire);
-        getChildren().add(0, wire); // behind gates
+        getChildren().add(0, wire); // put it behind gates
         
-        // Track connection
+        // Track connection between wires
         connections.get(to).add(from);
     }
 
