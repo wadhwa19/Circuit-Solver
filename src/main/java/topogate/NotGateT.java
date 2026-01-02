@@ -9,7 +9,7 @@ public class NotGateT extends GateT{
 
     @Override
     public boolean evaluate(Map<GateT, Boolean> values) {
-        // NOT gate should have exactly 1 input
+        // NOT gate has only 1 input
         return !values.get(getInputs().get(0));
     }
 }

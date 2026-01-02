@@ -12,9 +12,9 @@ public class NandGateT extends GateT {
     public boolean evaluate(Map<GateT, Boolean> values) {
         for (GateT gate : getInputs()) {
             if (!values.get(gate)) {
-                return true; // if any input is false, NAND = true
+                return true; // if any input is false then NAND gives true
             }
         }
-        return false; // all inputs are true → NAND = false
+        return false; // all inputs are true then NAND gives false
     }
 }
