@@ -19,7 +19,7 @@ public abstract class GateT {
         return inputs;
     }
 
-    // Evaluate using values map (inputs must be already evaluated)
+   
     public abstract boolean evaluate(Map<GateT, Boolean> values);
 }
 
