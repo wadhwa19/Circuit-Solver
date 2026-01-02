@@ -4,18 +4,18 @@ A JavaFX-based visual logic circuit simulator that allows users to design, conne
 ## Motivation 
 
 As an electrical engineering student, combinational circuits are everywhere - op-amps, digital systems, basically the building blocks of anything cool I want to design. They're supposed to be foundational, but here's the thing: when I first learned about them, I was really confused.
-Picture this: me, drowning in massive truth tables that looked like abstract art gone wrong. Eight inputs? That's 256 rows. Good luck keeping track of which gate connects to what. It was chaos. Beautiful, frustrating chaos.
+Picture this: me, drowning in massive truth tables that looked like abstract art gone wrong. Eight inputs? That's 256 rows. Good luck keeping track of which gate connects to what. It was chaos.
 Then I took a Data Structures and Algorithms class, and something clicked. 
 I learned about graph algorithms - depth-first search, topological sorting, all that good stuff - and suddenly it struck to me: Wait... circuits are just graphs! Gates are nodes, wires are edges, and evaluating a circuit is literally just a topological sort problem!
-So I thought, "Why am I still drawing these circuits by hand like it's 1950? I know how to code. I know graph algorithms. Let's make this happen!"
-And that's how this project was born.:
-Drag and drop gates
+So I thought, "Why am I still drawing these circuits by hand? I know how to code. I know graph algorithms."
+And that's how this project was born:
+Dragging and dropping gates
 Watch the computer handle all the messy evaluation logic
 Actually understand what's happening instead of drowning in truth tables
 
-
-This tool has changed how I solve combinational circuits. No more crossed-out truth tables, no more "wait, which input was this again?" Just clean, visual, algorithm-powered circuit solving.
+This tool has changed how I solve combinational circuits now. No more crossed-out truth tables, no more "wait, which input was this again?" Just clean, visual, algorithm-powered circuit solving.
 If you've ever felt overwhelmed by combinational logic, this one's for you. Circuits like half adders and sr latches are now easy to visualise !!!
+
 ## Features
 
 ### Gate Types
@@ -64,7 +64,7 @@ src/main/java/
 
 - **Java**: JDK 11 or higher
 - **JavaFX**: Version 25.0.1 or compatible
-- **Operating System**: Windows, macOS, or Linux
+
 
 ## Installation & Setup
 
@@ -153,5 +153,5 @@ java --module-path "path/to/javafx-sdk/lib" \
 
 ## Future Developments 
 
--Add feedback loop functionality.
+-Add feedback loop functionality to circuits.
 -Enhance UI.
