@@ -36,10 +36,10 @@ public class VisualGate extends Group {
 
         getChildren().addAll(body, text);
 
-        // Setup context menu based on gate type
+        // context menu based on gate type
         setupContextMenu(body);
 
-        // Add pins based on gate type
+        // Added pins based on gate type for input and output
         if (type == GateType.INPUT) {
             // Input gate: only output pin
             outputPin = new Pin(Pin.PinType.OUTPUT, this);
@@ -196,7 +196,7 @@ public class VisualGate extends Group {
             menu.getItems().add(sep);
         }
         
-        // Store reference for MainApp to use (for adding "Set as Output" and "Delete")
+        // Storing reference for MainApp to use 
         this.setUserData(menu);
         
         this.setOnContextMenuRequested(e -> {
