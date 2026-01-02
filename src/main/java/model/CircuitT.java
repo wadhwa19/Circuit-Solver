@@ -2,6 +2,8 @@ package model;
 
 import java.util.*;
 import topogate.*;
+// file conatins logic for building circuit and solving it from
+// the gates drawn on canvas
 
 public class CircuitT {
     private final Map<String, GateT> gates = new LinkedHashMap<>();
@@ -38,7 +40,7 @@ public class CircuitT {
         return outputGate;
     }
 
-    // --- Add Toposolver methods ---
+   
     public void buildTopo() {
         solver.createAdj();
         solver.toposort();

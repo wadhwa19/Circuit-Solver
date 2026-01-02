@@ -1,7 +1,6 @@
 package model;
 
 import java.util.*;
-
 import topogate.GateT;
 import topogate.InputGateT;
 
@@ -35,23 +34,23 @@ public class Toposolver {
 
         for (GateT g : allGates) {
             for (GateT input : g.getInputs()) {
-                adjList.get(input).add(g);               // input → g
-                inDegree.put(g, inDegree.get(g) + 1);   // increment in-degree
+                adjList.get(input).add(g);               // input added to g
+                inDegree.put(g, inDegree.get(g) + 1);   // increment in-degree inputs
             }
         }
     }
 
-    // DFS post-order
+    // DFS post-order traversal which then reversed to get topo order
     private void dfsPost(GateT node) {
         if (visited.contains(node)) return;
         visited.add(node);
         for (GateT neighbor : adjList.get(node)) {
             dfsPost(neighbor);
         }
-        topoOrder.add(node);  // add after visiting all neighbors
+        topoOrder.add(node);  
     }
 
-    // Generate topological order
+    // Generating topological order
     public void toposort() {
         List<GateT> allGates = new ArrayList<>(idMap.values());
         for (GateT g : allGates) {
@@ -68,7 +67,7 @@ public class Toposolver {
             if (g instanceof InputGateT) {
                 values.put(g, ((InputGateT) g).evaluate(values));
             } else {
-                values.put(g, g.evaluate(values));  // g.evaluate() should uses inputs' values
+                values.put(g, g.evaluate(values));  
             }
         }
 
