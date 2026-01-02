@@ -9,12 +9,12 @@ Then I took a Data Structures and Algorithms class, and something clicked.
 I learned about graph algorithms - depth-first search, topological sorting, all that good stuff - and suddenly it struck to me: Wait... circuits are just graphs! Gates are nodes, wires are edges, and evaluating a circuit is literally just a topological sort problem!
 So I thought, "Why am I still drawing these circuits by hand? I know how to code. I know graph algorithms."
 And that's how this project was born:
-Dragging and dropping gates
-Watch the computer handle all the messy evaluation logic
-Actually understand what's happening instead of drowning in truth tables
+Dragging and dropping gates and
+watch the computer do all that messy evaluation for me so I can really understand what's happening instead of drowning in truth tables.
 
 This tool has changed how I solve combinational circuits now. No more crossed-out truth tables, no more "wait, which input was this again?" Just clean, visual, algorithm-powered circuit solving.
 If you've ever felt overwhelmed by combinational logic, this one's for you. Circuits like half adders and sr latches are now easy to visualise !!!
+
 
 ## Features
 
@@ -91,6 +91,35 @@ java --module-path "path/to/javafx-sdk/lib" \
      --add-modules javafx.controls \
      frontend.MainApp
 ```
+## Running Tests
+The project has comprehensive gate logic and complete circuit integration tests.
+### Compiling Gate Logic Tests
+bash# Compile tests
+javac -cp . test/GateTest.java
+
+# Run tests
+java test.GateTest
+Run Integration Tests (Circuit Evaluation)
+bash# Compile tests
+javac -cp . test/CircuitTest.java
+
+# Run tests
+java test.CircuitTest
+Expected Output:
+Running Logic Gate Unit Tests...
+
+Testing AND Gate:
+  ✓ AND(0,0) PASSED
+  ✓ AND(0,1) PASSED
+  ✓ AND(1,0) PASSED
+  ✓ AND(1,1) PASSED
+...
+========== TEST RESULTS ==========
+Passed: 24
+Failed: 0
+Total:  24
+==================================
+✓ All tests passed!
 
 ## How to Use
 
@@ -155,3 +184,4 @@ java --module-path "path/to/javafx-sdk/lib" \
 
 -Add feedback loop functionality to circuits.
 -Enhance UI.
+
