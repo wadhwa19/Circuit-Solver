@@ -26,15 +26,15 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Visual Logic Circuit Editor");
+        primaryStage.setTitle("Saesha's Logic Circuit Solver");
 
         circuit = new CircuitT();
         canvas = new CircuitCanvas();
-
+        
         BorderPane root = new BorderPane();
         root.setCenter(canvas);
-
-        // Toolbar with all gate types
+        
+        // Toolbar with all gate types and evaluation button
         ToolBar toolbar = new ToolBar();
         Button addInput = new Button("INPUT");
         Button addAnd = new Button("AND");
@@ -54,20 +54,21 @@ public class MainApp extends Application {
             sep, evalBtn, clearBtn
         );
         root.setTop(toolbar);
+        
 
-        // Instructions panel
+        // Instructions panel to expalin usage
         VBox instructions = new VBox(10);
         instructions.setPadding(new Insets(10));
         instructions.setPrefWidth(200);
         Label title = new Label("Instructions:");
         title.setStyle("-fx-font-weight: bold;");
-        Label inst1 = new Label("1. Click gate buttons to add gates");
+        Label inst1 = new Label("1. Click gate buttons to add gates on canvas");
         Label inst2 = new Label("2. Drag gates to position");
         Label inst3 = new Label("3. Click OUTPUT pin (red), then INPUT pin (blue) to connect");
-        Label inst4 = new Label("4. Click canvas to cancel connection");
+        Label inst4 = new Label("4. Click anywhere on canvas to cancel connection");
         Label inst5 = new Label("5. Right-click INPUT gates to toggle value");
         Label inst6 = new Label("6. Right-click any gate and select 'Set as Output'");
-        Label inst7 = new Label("7. Click 'Evaluate Circuit'");
+        Label inst7 = new Label("7. Click 'Evaluate Circuit' on toolbar for results");
         
         inst1.setWrapText(true);
         inst2.setWrapText(true);
@@ -101,7 +102,7 @@ public class MainApp extends Application {
         String id = type.name() + "_" + (gateCounter++);
         VisualGate vGate = new VisualGate(type, id, circuit);
         
-        // Add "Set as Output Gate" and "Delete" options to the gate's existing menu
+        // "Set as Output Gate" and "Delete" options to the gate's menu
         ContextMenu menu = vGate.getContextMenu();
         if (menu != null) {
             MenuItem setOutput = new MenuItem("Set as Output Gate");
@@ -128,9 +129,7 @@ public class MainApp extends Application {
         // Remove from canvas (also removes wires)
         canvas.removeGate(vGate);
         
-        // Remove from circuit backend
-        // Note: We can't easily remove from CircuitT's internal maps,
-        // but it won't affect evaluation since disconnected gates won't be in the topo sort
+        
         
         // If this was the output gate, clear it
         if (circuit.getOutputGate() == vGate.getGateT()) {
