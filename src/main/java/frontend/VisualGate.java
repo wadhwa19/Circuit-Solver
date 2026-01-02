@@ -75,7 +75,7 @@ public class VisualGate extends Group {
             getChildren().addAll(inputPin1, inputPin2, outputPin);
         }
     }
-
+    
     private GateT createBackendGate(GateType type, String label, CircuitT circuit) {
         GateT g;
         switch (type) {
