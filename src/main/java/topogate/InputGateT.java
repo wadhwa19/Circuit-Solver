@@ -17,7 +17,7 @@ public class InputGateT extends GateT {
         return value;
     }
 
-    // New method to update input dynamically
+    // New method to update input dynamically so toggling works
     public void setValue(boolean value) {
         this.value = value;
     }
