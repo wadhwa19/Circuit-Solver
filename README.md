@@ -97,16 +97,10 @@ java --module-path "path/to/javafx-sdk/lib" \
 ## Running Tests
 The project has comprehensive gate logic and complete circuit integration tests.
 ### Gate Logic Tests
-# Compile tests
 javac -cp . test/GateTest.java
-
-### Run Integration Tests for Circuit Evaluation
-# Run tests
 java test.GateTest
-# Compile tests
+### Run Integration Tests for Circuit Evaluation
 javac -cp . test/CircuitTest.java
-
-# Run tests
 java test.CircuitTest
 
 ## How to Use
